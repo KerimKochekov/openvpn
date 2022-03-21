@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo su -
-
 docker ps -a
 docker-compose --version
 
@@ -31,5 +29,3 @@ chmod +x openvpn_adduser.sh
 chmod +x openvpn_removeuser.sh
 
 echo "Installation done"
-
-exit
