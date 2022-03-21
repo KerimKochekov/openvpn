@@ -21,7 +21,7 @@ Check whether vpn user has been created:
 ```bash
 bar@foo$:ls /opt/profiles/
 ```
-If yes, exit from server and pull created openvpn account with name <username> to your local machine with SCP protocol:
+If yes, exit from server and pull created openvpn account to your local machine with SCP protocol:
 ```bash
 bar@foo$:scp -P 2219 sysadm@<server-ip>:/opt/profiles/<username>.ovpn ~/Desktop/
 ```
