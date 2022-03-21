@@ -23,7 +23,7 @@ bar@foo$:ls /opt/profiles/
 ```
 If yes, exit from server and pull created openvpn account with name <username> to your local machine with SCP protocol:
 ```bash
-bar@foo$:scp oldtown:/opt/profiles/<username>.ovpn ~/Desktop/
+bar@foo$:scp -P 2219 sysadm@<server-ip>:/opt/profiles/<username>.ovpn ~/Desktop/
 ```
 Now you can view your created openvpn user in your Desktop, congrats!
   
