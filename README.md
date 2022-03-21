@@ -1,5 +1,5 @@
 # Openvpn
-Before start assign SERVER_IPV4 to your server ip in "openvpn_install.sh" and give permission to "setup.sh".
+Before start assign SERVER_IPV4 to your server ip in "openvpn_install.sh" and give permission to "setup.sh" with following command:
 ```bash
 bar@foo$:chmod +x setup.sh
 ```
