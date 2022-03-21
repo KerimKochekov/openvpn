@@ -121,4 +121,3 @@ nft list ruleset
 
 echo "Finished Docker installation"
 
-exit
