@@ -29,6 +29,10 @@ Create user account with some name <username>
 ```bash
 ./openvpn_adduser.sh <username>
 ```
+Delete user account in case of you need:
+```bash
+./openvpn_removeuser.sh
+```
 Check whether vpn user has been created:
 ```bash
 ls /opt/profiles/
