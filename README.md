@@ -1,4 +1,6 @@
 # Openvpn
+Before start assign SERVER_IPV4 to your server ip in "openvpn_install.sh".
+
 SSH to server and run script:
 ```bash
 bar@foo$:./setup.sh
