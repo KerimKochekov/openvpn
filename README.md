@@ -4,6 +4,12 @@
 ssh-keygen -t ed25519 -C 'sysadm' -f ~/.ssh/sysadm_ed25519
 ssh-keygen -t rsa -b 4096 -C 'sysadm' -f ~/.ssh/sysadm_rsa
 ```
+
+## How to SSH to server?
+```bash
+ssh root@<server-ip>
+```
+
 ## Start setting vpn
 Before start assign SERVER_IPV4 to your server ip in "openvpn_install.sh" and give permission to "setup.sh" with following command:
 ```bash
