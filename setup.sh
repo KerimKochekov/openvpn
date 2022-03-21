@@ -6,8 +6,6 @@
 
 # Init setup
 
-sudo su -
-
 echo "Updating essential packages"
 apt update -y
 apt upgrade -y
@@ -123,5 +121,4 @@ nft list ruleset
 
 echo "Finished Docker installation"
 
-exit
 exit
