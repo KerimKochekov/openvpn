@@ -1,0 +1,180 @@
+# Use protocol version 2
+Protocol 2
+
+# Use different port than default 22.
+#
+# Changing default port number does not increase securtiy; however, bots
+# and scanners using the default ssh port will not find the server and
+# launch automated attacks against it.
+#
+# On the other hand, this will require to specify the port for each
+# connection.
+Port 2219
+
+# Specifies which address family, inet (IPv4), inet6 (IPv6) or any, to
+# use. Use only IPv4.
+AddressFamily inet
+
+# Set a specific address to listen, all IPv4 addresses.
+ListenAddress 0.0.0.0
+
+# Enable the allowed ciphers for protocol version 2.
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
+
+# Enable the available MAC (message authentication code) algorithms.
+#
+# The MAC algorithm is used in protocol version 2 for data integrity
+# protection. Multiple algorithms must be comma-separated. The
+# algorithms that contain “-etm” calculate the MAC after encryption
+# (encrypt-then-mac). These are considered safer and their use
+# recommended.
+MACs hmac-sha2-512-etm@openssh.com
+
+# Enable the available KEX (Key Exchange) algorithms.
+KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+
+# Set the maximum amount of data that may be transmitted before the
+# session key is renegotiated.
+RekeyLimit 256M
+
+# Logging parameters. Currently, I do not know anything about these
+# parameters.
+SyslogFacility AUTH
+LogLevel VERBOSE
+
+# Disconnect after this time if the user has not successfully logged in.
+# If the value is 0, there is no time limit. The default is 120 seconds.
+LoginGraceTime 15s
+
+# Disable root ssh login.
+PermitRootLogin no
+
+# Prevent the ssh server from starting if certain files have loose
+# permissions.
+StrictModes yes
+
+# After the specified number of failed login attempts, automatically
+# disconnect the ssh connection from the server.
+MaxAuthTries 3
+
+# Allow only two sessions. Specifies the maximum number of open sessions
+# permitted per network connection. The default is 10.
+MaxSessions 2
+
+# Allow only logins using public key authentication.
+PubkeyAuthentication yes
+
+# Specify the file containing the public keys that can be used for user
+# authentication. The token '%h' is replaced with the home directory of
+# the user being authenticated.
+AuthorizedKeysFile %h/.ssh/authorized_keys
+
+# Disable host (rhosts or /etc/hosts.equiv) based authentication. For
+# this to work you will also need host keys in /etc/ssh/ssh_known_hosts,
+HostbasedAuthentication no
+
+# Ignore .rhosts and .shosts files in RhostsRSAAuthentication or
+# HostbasedAuthentication.
+IgnoreRhosts yes
+
+# Disable password authentication.
+PasswordAuthentication no
+
+# Do not allow empty password when PasswordAuthentication is enabled.
+PermitEmptyPasswords no
+
+# Disable challenge-response passwords.
+ChallengeResponseAuthentication no
+
+# Enable the Pluggable Authentication Module (PAM) interface. Because PAM
+# challenge-response authentication usually serves an equivalent role to
+# password authentication, you should disable either
+# PasswordAuthentication or ChallengeResponseAuthentication.
+UsePAM yes
+
+# Disable the forwarding of the ssh login. Note that disabling agent
+# forwarding does not improve security unless users are also denied
+# shell access, as they can always install their own forwarders.
+AllowAgentForwarding no
+
+# Disable port forwarding. Note that disabling TCP forwarding does not
+# improve security unless users are also denied shell access, as they
+# can always install their own forwarders.
+AllowTcpForwarding no
+
+# Disable remote hosts to connect to ports forwarded for the client.
+GatewayPorts no
+
+# Disable remote GUI view.
+X11Forwarding no
+
+# Do not print /etc/motd when ssh user logs in.
+PrintMotd no
+
+# Print date and time of last user login when user logs in
+# interactively.
+PrintLastLog yes
+
+# Enable TCP keepalive message to the other side.
+#
+# If they are sent, death of the connection or crash of one of the
+# machines will be properly noticed. However, this means that
+# connections will die if the route is down temporarily, and some people
+# find it annoying. On the other hand, if TCP keepalives are not sent,
+# sessions may hang indefinitely on the server, leaving 'ghost' users
+# and consuming server resources.
+#
+# The default is 'yes' (to send TCP keepalive messages), and the server
+# will notice if the network goes down or the client host crashes. This
+# avoids infinitely hanging sessions.
+TCPKeepAlive yes
+
+# Disable ~/.ssh/environment and environment= options in
+# ~/.ssh/authorized_keys.
+#
+# Enabling environment processing may enable users to bypass access
+# restrictions in some configurations using mechanisms such as
+# LD_PRELOAD.
+PermitUserEnvironment no
+
+# Set the compression to delayed, until the user has been successfully
+# authenticated.
+Compression delayed
+
+# Define the maximum time the session can be inactive before it is
+# terminated. In this case, 300 seconds is 5 minutes.
+#
+# If ClientAliveInterval is set to 15, and ClientAliveCountMax is set to
+# 3, unresponsive ssh clients will be disconnected after approximately
+# 45 seconds. This option applies to protocol version 2 only.
+ClientAliveInterval 300
+
+# Define the number of checks to be performed before disconnecting.
+ClientAliveCountMax 1
+
+# Disable the remote host name lookup and that the resolved host name
+# for the remote IP address maps back to the very same IP address check.
+# The default is 'yes'.
+UseDNS no
+
+# Allow only single concurrent connection. Specifies the maximum number
+# of concurrent unauthenticated connections to the ssh daemon.
+# Additional connections will be dropped until authentication succeeds
+# or the LoginGraceTime expires for a connection. The default is 10.
+MaxStartups 1
+
+# Disable tun device forwarding.
+# The argument must be 'yes', 'point-to-point' (layer 3), 'ethernet'
+# (layer 2), or 'no'. Specifying 'yes' permits both 'point-to-point' and
+# 'ethernet'.
+PermitTunnel no
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# Overrided settings per user basis.
+Match User sysadm
+       AllowTcpForwarding yes
+
+# Allow ssh login only for user names that match one of the patterns.
+AllowUsers sysadm
