@@ -3,9 +3,9 @@
 # Disclaimer: Below some commands need root privileges
 
 #set -e
+chmod +x openvpn.sh
 
 # Init setup
-
 echo "Updating essential packages"
 apt update -y
 apt upgrade -y
