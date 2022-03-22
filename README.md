@@ -50,6 +50,10 @@ First install nginx:
 ```bash
 $ sudo apt install nginx
 ```
+Open nginx document:
+```bash
+$ sudo nano /etc/nginx/sites-available/default
+```
 
 Redirect requests to your preferred server, e.g., add 
 
@@ -58,7 +62,6 @@ Redirect requests to your preferred server, e.g., add
 listen 80 default_server;
 listen [::]:80 default_server;
 ```
-in `/etc/nginx/sites-available/default`. 
 
 Save and restart nginx: 
 
