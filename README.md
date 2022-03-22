@@ -69,6 +69,24 @@ Save and restart nginx:
 $ sudo systemctl status nginx
 ```
 
+You might also need to allow traffic on port 80 in your firewall rules. In case of nftables add
+```
+tcp dport 80 counter accept
+```
+
+near
+```
+tcp dport 2219 counter accept
+tcp dport 21 counter accept
+```
+
+in `/etc/nftables.conf`.
+
+Finally restart nftables:
+```bash
+$ sudo systemctl restart nftables
+```
+
 Test if visiting your server IP in your browser redirects HTTP requests.
 
 ### Reference
